@@ -21,10 +21,26 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	public ReadSymptomDataFromFile (String filepath) {
 		this.filepath = filepath;
 	}
-	
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+
+	@java.lang.Override
+	public java.lang.String toString() {
+		return "ReadSymptomDataFromFile{" +
+				"filepath='" + filepath + '\'' +
+				'}';
+	}
+
 	@Override
 	public List<String> GetSymptoms() {
-		ArrayList<String> result = new ArrayList<String>();
+		//changement de ArrayList to List
+		List <String> result = new ArrayList<String>();
 		
 		if (filepath != null) {
 			try {
