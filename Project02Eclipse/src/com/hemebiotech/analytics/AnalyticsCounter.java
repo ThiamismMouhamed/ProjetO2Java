@@ -9,6 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * Utilitaire class
+ */
 public class AnalyticsCounter {
 	private static CountOccurences countOccurences;
 	private static  ReadSymptomDataFromFile readSymptomDataFromFile;
