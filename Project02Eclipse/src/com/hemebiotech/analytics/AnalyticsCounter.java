@@ -4,59 +4,45 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;
-	private static int rashCount = 0;
-	private static int pupilCount = 0;
+	private static CountOccurences countOccurences;
+	private static  ReadSymptomDataFromFile readSymptomDataFromFile;
+	private static  WriteSymptomWithOccurenceFromFile writeSymptomWithOccurenceFromFile;
 	
 	public static void main(String args[]) throws Exception {
-		// first get input
-		// try with resources
 
-		try (BufferedReader bufferedReader = new BufferedReader(new FileReader("Project02Eclipse/symptoms.txt"))){
-			String line;
-			//tester si la ligne lue est non vide
+		String pathFileIn = "Project02Eclipse/symptoms.txt";
+		String pathfileExit = "result2.out";
 
-			int i = 0;	// compteur pour recuperer le nombre de ligne lu
-			while ((line = bufferedReader.readLine()) != null){
-			  System.out.println(line);
-			  i++;
-			  if(line.equals("headache")){
-				  headacheCount ++;
-				  System.out.println("number of headaches: " + headacheCount);
+		// intaciation class ReadSymptomDataFromFile
+		readSymptomDataFromFile = new ReadSymptomDataFromFile(pathFileIn);
+		// read file symptom.txt with the method getSymptoms()
+		List<String> symptoms = readSymptomDataFromFile.getSymptoms();
 
-			} else if (line.equals("rush")) {
-				  rashCount++;
-				  System.out.println("number of rush: " + rashCount);
+		//create liste symptom for counter occurence
+		List<String> listForOccurences = new ArrayList<>(Arrays.asList("headache","tremor","pupils"));
+		//instanciation class CountOccurences
+		countOccurences = new CountOccurences(listForOccurences);
+		// count occurences with symptoms
+		Map<String, Integer> occurence = countOccurences.listSymptomWithOccurence(symptoms);
 
-			  } else if (line.equals("pupils")) {
-				  pupilCount ++;
-				  System.out.println("number of pupils: " + pupilCount);
+		//Intaciation to class WriteSymptomWithOccurenceFromFile
 
-			  }
-			}
-			System.out.println("nombre de ligne lu :"+ i +"\n");
-		}catch (java.lang.Exception e) {
-			System.err.println("le fichier %s n'a pas ete trouve.");
+		writeSymptomWithOccurenceFromFile = new WriteSymptomWithOccurenceFromFile(pathfileExit);
+		// write result count occurence to file result.out
 
-		}
+		writeSymptomWithOccurenceFromFile.getFileSymptomsExit(occurence);
 
-		// next generate output
-		FileWriter writer = null;
-		try {
-			writer = new FileWriter("result.out");
-			writer.write("headache: " + headacheCount + "\n");
-			writer.write("rash: " + rashCount + "\n");
-			writer.write("dialated pupils: " + pupilCount + "\n");
+		// afficher le resultat
+		System.out.println(occurence);
 
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}finally {
-			if(writer !=null){
-				writer.close();
-			}
-		}
+
+
 
 	}
 }
