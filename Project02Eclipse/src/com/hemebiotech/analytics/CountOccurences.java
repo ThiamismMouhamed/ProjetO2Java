@@ -3,6 +3,7 @@ package com.hemebiotech.analytics;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * class to count occurrences
@@ -21,7 +22,7 @@ public class CountOccurences {
      */
     public Map<String, Integer> listSymptomWithOccurence(List<String> symptoms){
 
-        Map<String, Integer> occurences = new HashMap<>();
+        Map<String, Integer> occurences = new TreeMap<>();
 
         for (int j=0; j<symptoms.size(); j++){
             int count=0;

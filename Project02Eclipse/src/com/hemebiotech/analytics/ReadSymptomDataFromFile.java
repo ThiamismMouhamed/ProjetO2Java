@@ -1,10 +1,7 @@
 package com.hemebiotech.analytics;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * class which allows to read a symptom file and which implements the interface IsymptomReader
@@ -34,12 +31,15 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		List<String> result = new ArrayList<>();
 		
 		if (filepath != null) {
+			System.out.println("Avant classer par ordre alphabétique");
 			try( BufferedReader reader = new BufferedReader (new FileReader(filepath))) {
 				String line = null;
 				while ((line = reader.readLine()) != null) {
 					result.add(line);
-					//System.out.println(line);
+					System.out.println(""+ line);
 				}
+				System.out.println("Apres avoir classé par ordre alphabétique");
+				Collections.sort(result);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
