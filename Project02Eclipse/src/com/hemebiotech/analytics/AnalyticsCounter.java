@@ -14,39 +14,37 @@ import java.util.Map;
  * Utilitaire class
  */
 public class AnalyticsCounter {
-	private static CountOccurences countOccurences;
-	private static  ReadSymptomDataFromFile readSymptomDataFromFile;
-	private static  WriteSymptomWithOccurenceFromFile writeSymptomWithOccurenceFromFile;
-	
-	public static void main(String args[]) throws Exception {
+    private static CountOccurences countOccurences;
+    private static ReadSymptomDataFromFile readSymptomDataFromFile;
+    private static WriteSymptomWithOccurenceFromFile writeSymptomWithOccurenceFromFile;
 
-		String pathFileIn = "Project02Eclipse/symptoms.txt";
-		String pathfileExit = "result2.out";
+    public static void main(String args[]) throws Exception {
 
-		// intaciation class ReadSymptomDataFromFile
-		readSymptomDataFromFile = new ReadSymptomDataFromFile(pathFileIn);
-		// read file symptom.txt with the method getSymptoms()
-		List<String> symptoms = readSymptomDataFromFile.getSymptoms();
+        String pathFileIn = "Project02Eclipse/symptoms.txt";
+        String pathfileExit = "result.out";
 
-		//create liste symptom for counter occurence
-		List<String> listForOccurences = new ArrayList<>(Arrays.asList("headache","tremor","pupils"));
-		//instanciation class CountOccurences
-		countOccurences = new CountOccurences(listForOccurences);
-		// count occurences with symptoms
-		Map<String, Integer> occurence = countOccurences.listSymptomWithOccurence(symptoms);
+        // intaciation class ReadSymptomDataFromFile
+        readSymptomDataFromFile = new ReadSymptomDataFromFile(pathFileIn);
+        // read file symptom.txt with the method getSymptoms()
+        List<String> symptoms = readSymptomDataFromFile.getSymptoms();
 
-		//Intaciation to class WriteSymptomWithOccurenceFromFile
+        //create liste symptom for counter occurence
+        List<String> listForOccurences = new ArrayList<>(Arrays.asList("headache", "tremor", "pupils"));
+        //instanciation class CountOccurences
+        countOccurences = new CountOccurences(listForOccurences);
+        // count occurences with symptoms
+        Map<String, Integer> occurence = countOccurences.listSymptomWithOccurence(symptoms);
 
-		writeSymptomWithOccurenceFromFile = new WriteSymptomWithOccurenceFromFile(pathfileExit);
-		// write result count occurence to file result.out
+        //Intaciation to class WriteSymptomWithOccurenceFromFile
 
-		writeSymptomWithOccurenceFromFile.getFileSymptomsExit(occurence);
+        writeSymptomWithOccurenceFromFile = new WriteSymptomWithOccurenceFromFile(pathfileExit);
+        // write result count occurence to file result.out
 
-		// afficher le resultat
-		System.out.println(occurence);
+        writeSymptomWithOccurenceFromFile.getFileSymptomsExit(occurence);
 
-
+        // afficher le resultat
+        System.out.println(occurence);
 
 
-	}
+    }
 }

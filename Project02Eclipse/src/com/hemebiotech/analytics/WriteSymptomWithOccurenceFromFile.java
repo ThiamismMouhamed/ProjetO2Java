@@ -15,6 +15,7 @@ public class WriteSymptomWithOccurenceFromFile implements IsymptomsWriter {
 
     /**
      * class constructor WriteSymptomWithOccurenceFromFile
+     *
      * @param filePath the variable filePath is the file path symptoms.txt
      */
     public WriteSymptomWithOccurenceFromFile(String filePath) {
@@ -24,6 +25,7 @@ public class WriteSymptomWithOccurenceFromFile implements IsymptomsWriter {
 
     /**
      * method which allows to write the results of occurrences in a file
+     *
      * @param wordOccurence
      */
     @Override
