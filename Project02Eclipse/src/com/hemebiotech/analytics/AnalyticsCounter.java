@@ -1,50 +1,42 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
+import java.util.TreeMap;
 
 /**
- * Utilitaire class
+ * class to count occurrences
  */
 public class AnalyticsCounter {
-    private static CountOccurences countOccurences;
-    private static ReadSymptomDataFromFile readSymptomDataFromFile;
-    private static WriteSymptomWithOccurenceFromFile writeSymptomWithOccurenceFromFile;
+    List<String> symptoms;
 
-    public static void main(String args[]) throws Exception {
+    public AnalyticsCounter(List<String> symptoms) {
+        this.symptoms = symptoms;
+    }
 
-        String pathFileIn = "Project02Eclipse/symptoms.txt";
-        String pathfileExit = "result.out";
+    /**
+     * listSymptomWithOccurence method to list the number of symptom occurrences greater than 1
+     *
+     * @return occurence list of occurence
+     */
+    public Map<String, Integer> countOccurences() {
 
-        // intaciation class ReadSymptomDataFromFile
-        readSymptomDataFromFile = new ReadSymptomDataFromFile(pathFileIn);
-        // read file symptom.txt with the method getSymptoms()
-        List<String> symptoms = readSymptomDataFromFile.getSymptoms();
+        Map<String, Integer> occurences = new TreeMap<>();
 
-        //create liste symptom for counter occurence
-        List<String> listForOccurences = new ArrayList<>(Arrays.asList("headache", "tremor", "pupils"));
-        //instanciation class CountOccurences
-        countOccurences = new CountOccurences(listForOccurences);
-        // count occurences with symptoms
-        Map<String, Integer> occurence = countOccurences.listSymptomWithOccurence(symptoms);
+        for (int j = 0; j < symptoms.size(); j++) {
+            int count = 0;
+            String next = symptoms.get(j);
+            for (int i=0; i<=j; i++) {
+                if (symptoms.get(i).equals(next)) {
+                    count++;
+                }
+            }
 
-        //Intaciation to class WriteSymptomWithOccurenceFromFile
-
-        writeSymptomWithOccurenceFromFile = new WriteSymptomWithOccurenceFromFile(pathfileExit);
-        // write result count occurence to file result.out
-
-        writeSymptomWithOccurenceFromFile.getFileSymptomsExit(occurence);
-
-        // afficher le resultat
-        System.out.println(occurence);
-
-
+            if (count >= 1) {
+                occurences.put(symptoms.get(j), count);
+                //System.out.println(symptoms.get(j) + ":" + count + "\n");
+            }
+        }
+        return occurences;
     }
 }

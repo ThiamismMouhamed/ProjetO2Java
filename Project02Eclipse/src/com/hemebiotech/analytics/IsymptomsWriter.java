@@ -15,5 +15,5 @@ public interface IsymptomsWriter {
      *
      * @param symptom returns an occurrence list of symptom
      */
-    void getFileSymptomsExit(Map<String, Integer> symptom);
+    void writeSymtoms(Map<String, Integer> symptom);
 }
