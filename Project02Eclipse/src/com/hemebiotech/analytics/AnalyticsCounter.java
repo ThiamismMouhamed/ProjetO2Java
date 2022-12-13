@@ -8,7 +8,7 @@ import java.util.TreeMap;
  * class to count occurrences
  */
 public class AnalyticsCounter {
-    List<String> symptoms;
+    private List<String> symptoms;
 
     public AnalyticsCounter(List<String> symptoms) {
         this.symptoms = symptoms;

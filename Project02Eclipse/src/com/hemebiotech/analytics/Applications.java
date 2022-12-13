@@ -17,7 +17,7 @@ public class Applications {
         // intaciation class ReadSymptomDataFromFile
         SymptomDataFromFileReader symptomDataFromFileReader = new SymptomDataFromFileReader(pathFileIn);
         // read file symptom.txt with the method getSymptoms()
-        List<String> symptoms = symptomDataFromFileReader.getSymptoms();
+        List<String> symptoms = symptomDataFromFileReader.fileSymptomReader();
 
         //instanciation class CountOccurences
         AnalyticsCounter analyticsCounter = new AnalyticsCounter(symptoms);
@@ -29,7 +29,7 @@ public class Applications {
         OccurenceFileOutWriter occurenceFileOutWriter = new OccurenceFileOutWriter(pathFileOut);
         // write result count occurence to file result.out
 
-        occurenceFileOutWriter.writeSymtoms(occurence);
+        occurenceFileOutWriter.fileSymptomsWriter(occurence);
 
         // afficher le resultat
         System.out.println(occurence);

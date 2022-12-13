@@ -9,7 +9,7 @@ import java.util.Map;
  * the interface IsymptomsWriter
  */
 
-public class OccurenceFileOutWriter implements IsymptomsWriter {
+public class OccurenceFileOutWriter implements SymptomWriter {
 
     private String filePath;
 
@@ -29,9 +29,8 @@ public class OccurenceFileOutWriter implements IsymptomsWriter {
      * @param wordOccurence
      */
     @Override
-    public void writeSymtoms(Map<String, Integer> wordOccurence) {
+    public void fileSymptomsWriter(Map<String, Integer> wordOccurence) {
 
-        //FileWriter writer = null;
         try (FileWriter writer = new FileWriter(filePath)) {
 
             for (Map.Entry mapentry : wordOccurence.entrySet()) {

@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * class which allows to read a symptom file and which implements the interface IsymptomReader
  */
-public class SymptomDataFromFileReader implements ISymptomReader {
+public class SymptomDataFromFileReader implements SymptomReader {
 
     private String filepath;
 
@@ -25,7 +25,7 @@ public class SymptomDataFromFileReader implements ISymptomReader {
      * @return result  list of file symptoms symptoms.txt
      */
     @Override
-    public List<String> getSymptoms() {
+    public List<String> fileSymptomReader() {
         //changement de ArrayList to List
         List<String> result = new ArrayList<>();
 

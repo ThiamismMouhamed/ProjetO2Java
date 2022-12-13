@@ -8,12 +8,12 @@ import java.util.Map;
  * <p>
  * that may contain many duplications
  */
-public interface IsymptomsWriter {
+public interface SymptomWriter {
 
     /**
      * Method to write symptom data from a file
      *
      * @param symptom returns an occurrence list of symptom
      */
-    void writeSymtoms(Map<String, Integer> symptom);
+    void fileSymptomsWriter(Map<String, Integer> symptom);
 }

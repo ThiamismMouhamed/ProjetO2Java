@@ -1,7 +1,6 @@
 package com.hemebiotech.analytics;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Anything that will read symptom data from a source
@@ -10,12 +9,12 @@ import java.util.Map;
  * <p>
  * The implementation does not need to order the list
  */
-public interface ISymptomReader {
+public interface SymptomReader {
     /**
      * If no data is available, return an empty List
      *
      * @return a raw listing of all Symptoms obtained from a data source, duplicates are possible/probable
      */
-    List<String> getSymptoms();
+    List<String> fileSymptomReader();
 
 }
